@@ -1,23 +1,35 @@
 const express = require("express");
+const hbs = require("hbs");
 const app = express();
 const port = 4200;
 const hostname = "192.168.3.15";
 
+// Handlebars
 app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/partials");
 
 // Static content
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-	res.render("home");
+	res.render("home", {
+		name: "Uriel",
+		title: "Curso de Node",
+	});
 });
 
 app.get("/generic", (req, res) => {
-	res.sendFile(__dirname + "/public/generic.html");
+	res.render("generic", {
+		name: "Uriel",
+		title: "Curso de Node",
+	});
 });
 
 app.get("/elements", (req, res) => {
-	res.sendFile(__dirname + "/public/elements.html");
+	res.render("elements", {
+		name: "Uriel",
+		title: "Curso de Node",
+	});
 });
 
 app.get("*", (req, res) => {
