@@ -1,7 +1,9 @@
 const express = require("express");
 const hbs = require("hbs");
+require("dotenv").config();
+
 const app = express();
-const port = 4200;
+const port = process.env.PORT;
 const hostname = "192.168.3.15";
 
 // Handlebars
